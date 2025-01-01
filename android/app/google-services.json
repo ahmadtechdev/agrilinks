@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "982121165076",
+    "project_id": "agrilinks-4912c",
+    "storage_bucket": "agrilinks-4912c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982121165076:android:e25035bb4e6d05b5631201",
+        "android_client_info": {
+          "package_name": "com.ahmadtechdev.agrlinks_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCARrKxA8lmTiSGzX22tmgkLjNkSF3Dq_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
