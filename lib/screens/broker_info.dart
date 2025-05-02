@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../colors.dart';
+import '../utils/colors.dart';
 import '../widgets/app_bar.dart';
 
 class BrokerInfo extends StatefulWidget {
@@ -22,7 +22,7 @@ class _BrokerInfoState extends State<BrokerInfo> {
               title: "Broker Info",
               backButton: true,
               signOutIcon: false,
-              backgroundColor: pColor,
+              backgroundColor: primaryColor,
               foregroundColor:
               wColor, // Example of using a different background color
             ),
@@ -30,9 +30,9 @@ class _BrokerInfoState extends State<BrokerInfo> {
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      pColor.withOpacity(0.9),
-                      pColor.withOpacity(0.6),
-                      pColor.withOpacity(0.4),
+                      primaryColor.withOpacity(0.9),
+                      primaryColor.withOpacity(0.6),
+                      primaryColor.withOpacity(0.4),
                     ],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
@@ -59,7 +59,7 @@ class _BrokerInfoState extends State<BrokerInfo> {
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: pColor,
+                        color: primaryColor,
                       ),
                     ),
                   ),
@@ -68,13 +68,13 @@ class _BrokerInfoState extends State<BrokerInfo> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       children: [
-                        Icon(Icons.location_on, color: yColor, size: 30),
+                        Icon(Icons.location_on, color: secondaryColor, size: 30),
                         SizedBox(width: 5),
                         Text(
                           "${Get.arguments['cityName'].toString()} ",
                           style: TextStyle(
                             fontSize: 18,
-                            color: bColor.withOpacity(0.8),
+                            color: blackColor.withOpacity(0.8),
                             fontWeight: FontWeight.bold,
                           ),
                         )
@@ -88,7 +88,7 @@ class _BrokerInfoState extends State<BrokerInfo> {
             Text("Broker Contact",
                 style: TextStyle(
                   fontSize: 20,
-                  color: bColor.withOpacity(0.8),
+                  color: blackColor.withOpacity(0.8),
                   fontWeight: FontWeight.bold,
                 )),
             Container(
@@ -98,7 +98,7 @@ class _BrokerInfoState extends State<BrokerInfo> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 gradient: LinearGradient(
-                  colors: [pColor.withOpacity(0.7), pColor],
+                  colors: [primaryColor.withOpacity(0.7), primaryColor],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                 ),
@@ -145,7 +145,7 @@ Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 gradient: LinearGradient(
-                  colors: [pColor.withOpacity(0.7), pColor],
+                  colors: [primaryColor.withOpacity(0.7), primaryColor],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                 ),

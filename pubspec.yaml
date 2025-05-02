@@ -24,6 +24,7 @@ dependencies:
   google_generative_ai: ^0.4.6
   url_launcher: ^6.3.1
   material_design_icons_flutter: ^7.0.7296
+  dropdown_search: ^5.0.6
 
 dev_dependencies:
   flutter_test:

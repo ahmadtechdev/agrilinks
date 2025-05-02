@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 import '../button.dart';
-import '../colors.dart';
-import 'inventory_screen.dart';
+import '../utils/colors.dart';
+import 'inventory/inventory_screen.dart';
 import 'signup_screen.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -36,7 +36,7 @@ class _SignInScreenState extends State<SignInScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: pColor,
+        backgroundColor: primaryColor,
         title: const Text("SignIn", style: TextStyle(fontWeight: FontWeight.bold),),
         foregroundColor: wColor,
         // actions: [Icon(Icons.more_vert)],
@@ -45,7 +45,7 @@ class _SignInScreenState extends State<SignInScreen> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-          color: pColor,
+          color: primaryColor,
         ),
         child: Padding(
 

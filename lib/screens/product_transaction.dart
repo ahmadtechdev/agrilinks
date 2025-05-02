@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../colors.dart';
-import '../widgets/btn.dart';
+import '../utils/colors.dart';
+import '../widgets/button.dart';
 import 'edit_product_transaction.dart';
 
 class TransactionHistory extends StatefulWidget {
@@ -35,7 +35,7 @@ class _TransactionHistoryState extends State<TransactionHistory> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         centerTitle: true,
-        backgroundColor: pColor,
+        backgroundColor: primaryColor,
         title: const Text(
           "Product Transaction",
           style: TextStyle(
@@ -145,7 +145,7 @@ class _TransactionHistoryState extends State<TransactionHistory> {
                             title,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: pColor,
+                                color: primaryColor,
                                 fontSize: 24),
                           ),
                           subtitle: Text(
@@ -160,8 +160,8 @@ class _TransactionHistoryState extends State<TransactionHistory> {
                                 color: type == "Send"
                                     ? rColor
                                     : type == "Received"
-                                        ? pColor
-                                        : pColor,
+                                        ? primaryColor
+                                        : primaryColor,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 2, horizontal: 8),

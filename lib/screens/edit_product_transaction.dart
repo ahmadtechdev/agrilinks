@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../colors.dart';
-import '../widgets/btn.dart';
+import '../utils/colors.dart';
+import '../widgets/button.dart';
 import 'product_transaction.dart';
 
 class EditTransaction extends StatefulWidget {
@@ -36,7 +36,7 @@ class _EditTransactionState extends State<EditTransaction> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         centerTitle: true,
-        backgroundColor: pColor,
+        backgroundColor: primaryColor,
         title: const Text(
           "Edit Transaction",
           style: TextStyle(
@@ -73,23 +73,23 @@ class _EditTransactionState extends State<EditTransaction> {
                     Center(
                       child: Text(
                           'Edit $title transaction' ,style: const TextStyle(
-                      color: pColor, fontSize: 20, fontWeight: FontWeight.w900),),
+                      color: primaryColor, fontSize: 20, fontWeight: FontWeight.w900),),
                     ), // Title of the modal bottom sheet
 
                     const SizedBox(height: 15),
                     TextFormField(
                       controller: qtyController..text = qty.toString(),
                       style: const TextStyle(
-                          color: pColor, fontSize: 17.0),
+                          color: primaryColor, fontSize: 17.0),
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                             Icons.production_quantity_limits,
-                            color: pColor.withOpacity(0.6)),
+                            color: primaryColor.withOpacity(0.6)),
                         focusedBorder: OutlineInputBorder(
                           borderRadius:
                           BorderRadius.circular(25.0),
                           borderSide: const BorderSide(
-                            color: pColor,
+                            color: primaryColor,
                             width: 2.0,
                           ),
                         ),
@@ -97,13 +97,13 @@ class _EditTransactionState extends State<EditTransaction> {
                           borderRadius:
                           BorderRadius.circular(25.0),
                           borderSide: BorderSide(
-                            color: pColor.withOpacity(0.6),
+                            color: primaryColor.withOpacity(0.6),
                             width: 2.0,
                           ),
                         ),
                         labelText: 'Quantity',
                         labelStyle: TextStyle(
-                            color: pColor.withOpacity(0.8)),
+                            color: primaryColor.withOpacity(0.8)),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -118,15 +118,15 @@ class _EditTransactionState extends State<EditTransaction> {
                     const SizedBox(height: 15),
                     DropdownButtonFormField(
                       style: const TextStyle(
-                          color: pColor, fontSize: 17.0),
+                          color: primaryColor, fontSize: 17.0),
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.merge_type,
-                            color: pColor.withOpacity(0.6)),
+                            color: primaryColor.withOpacity(0.6)),
                         focusedBorder: OutlineInputBorder(
                           borderRadius:
                           BorderRadius.circular(25.0),
                           borderSide: const BorderSide(
-                            color: pColor,
+                            color: primaryColor,
                             width: 2.0,
                           ),
                         ),
@@ -134,13 +134,13 @@ class _EditTransactionState extends State<EditTransaction> {
                           borderRadius:
                           BorderRadius.circular(25.0),
                           borderSide: BorderSide(
-                            color: pColor.withOpacity(0.6),
+                            color: primaryColor.withOpacity(0.6),
                             width: 2.0,
                           ),
                         ),
                         labelText: 'Transaction Type',
                         labelStyle: TextStyle(
-                            color: pColor.withOpacity(0.8)),
+                            color: primaryColor.withOpacity(0.8)),
                       ),
                       value: _selectedType,
                       items: [

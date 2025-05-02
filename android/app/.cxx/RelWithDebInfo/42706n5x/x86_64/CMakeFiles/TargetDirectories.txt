@@ -1,0 +1,2 @@
+C:/Users/Ahmad/StudioProjects/agrilinks/android/app/.cxx/RelWithDebInfo/42706n5x/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/Ahmad/StudioProjects/agrilinks/android/app/.cxx/RelWithDebInfo/42706n5x/x86_64/CMakeFiles/rebuild_cache.dir

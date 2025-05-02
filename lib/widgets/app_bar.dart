@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../colors.dart';
+import '../utils/colors.dart';
 import '../screens/signin_screen.dart';
 
 
@@ -22,7 +22,7 @@ class CustomAppBar extends StatelessWidget {
     this.backButton = false,
     this.backButtonIcon = Icons.arrow_back,
     this.signOutIcon = false,
-    this.backgroundColor = pColor, // Default background color
+    this.backgroundColor = primaryColor, // Default background color
     this.foregroundColor = Colors.white,
     this.onBackButtonPressed, // Default background color
   });

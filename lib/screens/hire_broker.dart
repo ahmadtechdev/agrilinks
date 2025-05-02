@@ -6,11 +6,11 @@ import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../colors.dart';
+import '../utils/colors.dart';
 import 'broker_info.dart';
-import 'inventory_screen.dart';
-import 'market_screen.dart';
-import 'navbar.dart';
+import 'inventory/inventory_screen.dart';
+import 'market/market_screen.dart';
+import '../widgets/navbar.dart';
 import 'newsfeed_screen.dart';
 
 class HireBroker extends StatefulWidget {
@@ -59,7 +59,7 @@ class _HireBrokerState extends State<HireBroker> {
       drawer: NavBar(),
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: pColor,
+        backgroundColor: primaryColor,
         title: const Text(
           "Hire Broker",
           style: TextStyle(
@@ -210,7 +210,7 @@ class _HireBrokerState extends State<HireBroker> {
           ),
         ],
         currentIndex: 2,
-        selectedItemColor: pColor,
+        selectedItemColor: primaryColor,
         onTap: onTabTapped,
       ),
     );

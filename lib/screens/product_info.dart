@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../colors.dart';
+import '../utils/colors.dart';
 import '../widgets/app_bar.dart';
 import 'product_transaction.dart';
 
@@ -26,7 +26,7 @@ class _ProductInfoState extends State<ProductInfo> {
               title: "Product Information",
               backButton: true,
               signOutIcon: false,
-              backgroundColor: pColor,
+              backgroundColor: primaryColor,
               foregroundColor:
               wColor, // Example of using a different background color
             ),
@@ -34,9 +34,9 @@ class _ProductInfoState extends State<ProductInfo> {
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      pColor.withOpacity(0.9),
-                      pColor.withOpacity(0.6),
-                      pColor.withOpacity(0.4),
+                      primaryColor.withOpacity(0.9),
+                      primaryColor.withOpacity(0.6),
+                      primaryColor.withOpacity(0.4),
                     ],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
@@ -63,7 +63,7 @@ class _ProductInfoState extends State<ProductInfo> {
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: pColor,
+                        color: primaryColor,
                       ),
                     ),
                   ),
@@ -72,13 +72,13 @@ class _ProductInfoState extends State<ProductInfo> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       children: [
-                        Icon(Icons.share_arrival_time, color: yColor, size: 30),
+                        Icon(Icons.share_arrival_time, color: secondaryColor, size: 30),
                         SizedBox(width: 5),
                         Text(
                           "${Get.arguments['date'].toString()} ",
                           style: TextStyle(
                             fontSize: 18,
-                            color: bColor.withOpacity(0.8),
+                            color: blackColor.withOpacity(0.8),
                             fontWeight: FontWeight.bold,
                           ),
                         )
@@ -94,7 +94,7 @@ class _ProductInfoState extends State<ProductInfo> {
             Text("Product Quantity in Inventory",
                 style: TextStyle(
                   fontSize: 20,
-                  color: bColor.withOpacity(0.8),
+                  color: blackColor.withOpacity(0.8),
                   fontWeight: FontWeight.bold,
                 )),
             Container(
@@ -104,7 +104,7 @@ class _ProductInfoState extends State<ProductInfo> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 gradient: LinearGradient(
-                  colors: [pColor.withOpacity(0.7), pColor],
+                  colors: [primaryColor.withOpacity(0.7), primaryColor],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                 ),
@@ -146,7 +146,7 @@ class _ProductInfoState extends State<ProductInfo> {
             Text("Product Price",
                 style: TextStyle(
                   fontSize: 20,
-                  color: bColor.withOpacity(0.8),
+                  color: blackColor.withOpacity(0.8),
                   fontWeight: FontWeight.bold,
                 )),
             Container(
@@ -156,7 +156,7 @@ class _ProductInfoState extends State<ProductInfo> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 gradient: LinearGradient(
-                  colors: [pColor.withOpacity(0.7), pColor],
+                  colors: [primaryColor.withOpacity(0.7), primaryColor],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                 ),
@@ -195,7 +195,7 @@ class _ProductInfoState extends State<ProductInfo> {
             Text("Product Details",
                 style: TextStyle(
                   fontSize: 20,
-                  color: bColor.withOpacity(0.8),
+                  color: blackColor.withOpacity(0.8),
                   fontWeight: FontWeight.bold,
                 )),
             SingleChildScrollView(
@@ -207,7 +207,7 @@ class _ProductInfoState extends State<ProductInfo> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   gradient: LinearGradient(
-                    colors: [pColor.withOpacity(0.7), pColor],
+                    colors: [primaryColor.withOpacity(0.7), primaryColor],
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft,
                   ),
@@ -234,8 +234,8 @@ class _ProductInfoState extends State<ProductInfo> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: pColor,
-        foregroundColor: yColor,
+        backgroundColor: primaryColor,
+        foregroundColor: secondaryColor,
         onPressed: () {
           Get.to(() => TransactionHistory(),
               arguments: {'docId': Get.arguments['docId'].toString(), 'title': Get.arguments['title'].toString()});

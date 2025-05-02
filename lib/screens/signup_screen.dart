@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 import '../button.dart';
-import '../colors.dart';
+import '../utils/colors.dart';
 import '../services/signUpServices.dart';
 import 'signin_screen.dart';
 
@@ -42,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: pColor,
+        backgroundColor: primaryColor,
         title: const Text("SignUp", style: TextStyle(fontWeight: FontWeight.bold),),
         foregroundColor: wColor,
         // actions: [Icon(Icons.more_vert)],
@@ -51,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-          color: pColor,
+          color: primaryColor,
         ),
         child: Padding(
 

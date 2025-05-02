@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../colors.dart';
-import 'add_product_screen.dart';
+import '../utils/colors.dart';
+import 'inventory/add_product_screen.dart';
 import 'product_transaction.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _ProductScreenState extends State<ProductScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         centerTitle: true,
-        backgroundColor: pColor,
+        backgroundColor: primaryColor,
         title: const Text(
           "Inventory Products",
           style: TextStyle(
@@ -90,7 +90,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     direction:DismissDirection.startToEnd, // Allow left swipe only
                     background: Container(
                       alignment: Alignment.centerLeft,
-                      color: pColor, // Background color when swiping
+                      color: primaryColor, // Background color when swiping
                       child: const Padding(
                         padding: EdgeInsets.only(left: 20.0),
                         child: Icon(
@@ -129,7 +129,7 @@ class _ProductScreenState extends State<ProductScreen> {
                             title,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: pColor,
+                                color: primaryColor,
                                 fontSize: 24),
                           ),
                           subtitle: Text(
@@ -148,7 +148,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                 width: 10.0,
                               ),
                               Card(
-                                color: pColor,
+                                color: primaryColor,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 2, horizontal: 8),
@@ -170,8 +170,8 @@ class _ProductScreenState extends State<ProductScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: pColor,
-        foregroundColor: yColor,
+        backgroundColor: primaryColor,
+        foregroundColor: secondaryColor,
         onPressed: () {
           Get.to(() => const AddProductScreen());
         },

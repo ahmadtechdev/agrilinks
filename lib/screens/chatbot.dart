@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:intl/intl.dart';
 
-import '../colors.dart';
-import 'navbar.dart';
+import '../utils/colors.dart';
+import '../widgets/navbar.dart';
 
 
 class ChatScreen extends StatefulWidget {
@@ -64,7 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         // automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: pColor,
+        backgroundColor: primaryColor,
 
         foregroundColor: wColor,
         title: const Text(
@@ -120,7 +120,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     padding: const EdgeInsets.all(12),
                     iconSize: 30,
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(pColor),
+                      backgroundColor: MaterialStateProperty.all(primaryColor),
                       foregroundColor: MaterialStateProperty.all(Colors.white),
                       shape: MaterialStateProperty.all(const CircleBorder()),
                     ),

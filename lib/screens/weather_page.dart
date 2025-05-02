@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather/weather.dart';
 
-import '../colors.dart';
-import 'consts.dart';
-import 'navbar.dart';
+import '../utils/colors.dart';
+import '../utils/consts.dart';
+import '../widgets/navbar.dart';
 
 
 class WeatherPage extends StatefulWidget {
@@ -36,7 +36,7 @@ class _WeatherPageState extends State<WeatherPage> {
       appBar: AppBar(
         // automaticallyImplyLeading: true,
         centerTitle: true,
-        backgroundColor: pColor,
+        backgroundColor: primaryColor,
         title: Text(
           "Weather",
           style: TextStyle(
@@ -183,7 +183,7 @@ class _WeatherPageState extends State<WeatherPage> {
       height: MediaQuery.sizeOf(context).height * 0.15,
       width: MediaQuery.sizeOf(context).width * 0.80,
       decoration: BoxDecoration(
-        color: pColor,
+        color: primaryColor,
         borderRadius: BorderRadius.circular(
           20,
         ),

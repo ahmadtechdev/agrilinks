@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../colors.dart';
+import '../utils/colors.dart';
 import 'signin_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,7 +18,7 @@ class WelcomeScreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: pColor,
+          color: primaryColor,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -33,14 +35,14 @@ class WelcomeScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
                 decoration: BoxDecoration(
-                    color: yColor,
+                    color: secondaryColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     )),
                 child: Text(
                   "LET'S GO",
                   style: TextStyle(
-                    color: pColor,
+                    color: primaryColor,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),

@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../colors.dart';
-import 'add_inventory_screen.dart';
-import 'add_newsfeed.dart';
-import 'inventory_screen.dart';
-import 'market_screen.dart';
-import 'navbar.dart';
+import '../utils/colors.dart';
+import 'inventory/add_inventory/add_inventory_screen.dart';
+import 'newsfeed/add_newsfeed.dart';
+import 'inventory/inventory_screen.dart';
+import 'market/market_screen.dart';
+import '../widgets/navbar.dart';
 
 class NewsFeedScreen extends StatefulWidget {
   @override
@@ -65,7 +65,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
       appBar: AppBar(
         // automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: pColor,
+        backgroundColor: primaryColor,
         title: Text(
           "NewsFeed",
           style: TextStyle(
@@ -167,8 +167,8 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: pColor,
-        foregroundColor: yColor,
+        backgroundColor: primaryColor,
+        foregroundColor: secondaryColor,
         onPressed: () {
           Get.to(() => AddNewsFeedScreen());
         },
@@ -195,7 +195,7 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
           ),
         ],
         currentIndex: 1,
-        selectedItemColor: pColor,
+        selectedItemColor: primaryColor,
         onTap: onTabTapped,
       ),
     );

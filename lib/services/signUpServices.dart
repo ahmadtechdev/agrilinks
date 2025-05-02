@@ -18,7 +18,7 @@ signUpUser(String userName, String userPhone, String userEmail,
       'userId': userid!.uid,
     }).then((value) => {
       FirebaseAuth.instance.signOut(),
-      Get.to(()=> SignInScreen()),
+      Get.to(()=> const SignInScreen()),
     });
   } on FirebaseAuthException catch (e) {
     print('Error: $e');

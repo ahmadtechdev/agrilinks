@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
+import 'utils/colors.dart';
 
 class RoundButton extends StatelessWidget {
 
@@ -15,11 +15,11 @@ class RoundButton extends StatelessWidget {
       child: Container(
         height: 50,
         decoration: BoxDecoration(
-          color: yColor,
+          color: secondaryColor,
           borderRadius: BorderRadius.circular(10)
 
         ),
-        child: Center(child: Text(title, style: const TextStyle(color: pColor, fontWeight: FontWeight.bold, fontSize: 16),)),
+        child: Center(child: Text(title, style: const TextStyle(color: primaryColor, fontWeight: FontWeight.bold, fontSize: 16),)),
       ),
     );
   }
