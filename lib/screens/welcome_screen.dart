@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 import '../utils/colors.dart';
-import 'signin_screen.dart';
+import 'authentication/signin_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

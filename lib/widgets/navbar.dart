@@ -5,13 +5,13 @@ import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../utils/colors.dart';
-import '../screens/inventory/add_product_screen.dart';
+import '../screens/inventory/add_product/add_product_screen.dart';
 import '../screens/chatbot.dart';
-import '../screens/hire_broker.dart';
-import '../screens/inventory/inventory_screen.dart';
+
+import '../screens/inventory/inventory_screen/inventory_screen.dart';
 import '../screens/market/my_market_adds.dart';
-import '../screens/signin_screen.dart';
-import '../screens/weather_page.dart';
+import '../screens/authentication/signin_screen.dart';
+import '../screens/weather/weather_page.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -87,17 +87,7 @@ class NavBar extends StatelessWidget {
               Get.to(() => MyMarketAdds());
             },
           ),
-          ListTile(
-            leading: Icon(MdiIcons.faceManProfile),
-            title: Text(
-              'Hire a Broker',
-              style: TextStyle(
-                  fontSize: 17, color: primaryColor, fontWeight: FontWeight.bold),
-            ),
-            onTap: () {
-              Get.to(() => HireBroker());
-            },
-          ),
+
           ListTile(
             leading: Icon(MdiIcons.weatherCloudy),
             title: Text(

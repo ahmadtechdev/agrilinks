@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../screens/inventory/inventory_screen.dart';
+import '../screens/inventory/inventory_screen/inventory_screen.dart';
 import '../screens/market/market_screen.dart';
-import '../screens/newsfeed_screen.dart';
+import '../screens/newsfeed/newsfeed_screen.dart';
 import '../utils/colors.dart';
 
 

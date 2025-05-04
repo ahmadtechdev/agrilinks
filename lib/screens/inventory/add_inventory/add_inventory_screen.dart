@@ -7,8 +7,8 @@ import '../../../widgets/bottom_navigation.dart';
 import '../../../widgets/button.dart';
 import '../../../widgets/custom_dropdown.dart';
 import '../../../widgets/round_text_field.dart';
-import '../add_product_screen.dart';
-import 'add_invevtory_controller.dart';
+import '../add_product/add_product_screen.dart';
+import 'add_inventory_controller.dart';
 
 class AddInventoryScreen extends StatelessWidget {
   const AddInventoryScreen({super.key});
@@ -183,9 +183,7 @@ class AddInventoryScreen extends StatelessWidget {
       controller: controller.qtyController,
       keyboardType: TextInputType.number,
       left: Icon(Icons.production_quantity_limits, color: AppColors.secondary),
-      onChanged: (value) {
-        // Validation will happen in the controller
-      },
+      validator: controller.validateQuantity,
     );
   }
 

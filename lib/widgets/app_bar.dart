@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../utils/colors.dart';
-import '../screens/signin_screen.dart';
+import '../screens/authentication/signin_screen.dart';
 
 
 class CustomAppBar extends StatelessWidget {

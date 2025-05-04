@@ -1,16 +1,13 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../utils/colors.dart';
-import '../../widgets/button.dart';
-import '../inventory/inventory_screen.dart';
+import '../inventory/inventory_screen/inventory_screen.dart';
 import '../market/market_screen.dart';
-import '../newsfeed_screen.dart';
+import 'newsfeed_controller.dart';
+import 'newsfeed_screen.dart';
+import 'newsfeed_widget.dart';
 
 class AddNewsFeedScreen extends StatefulWidget {
   @override
@@ -18,186 +15,308 @@ class AddNewsFeedScreen extends StatefulWidget {
 }
 
 class _AddNewsFeedScreenState extends State<AddNewsFeedScreen> {
-  final postController = TextEditingController();
-  final titleController = TextEditingController();
-  String UserName="";
-  int likes=0;
   final _formKey = GlobalKey<FormState>();
-  User? userId = FirebaseAuth.instance.currentUser;
+  final _titleController = TextEditingController();
+  final _postController = TextEditingController();
+  final NewsFeedController _controller = Get.find<NewsFeedController>();
 
-
-  static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Inventory',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Newsfeed',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Market',
-      style: optionStyle,
-    ),
-  ];
-
-  void onTabTapped(int index) {
-    if (index == 0) {
-      Get.to(() => InventoryScreen());
-    } else if (index == 1) {
-      Get.to(() => NewsFeedScreen());
-    } else if (index == 2) {
-      Get.to(() => MarketScreen());
-    }
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _postController.dispose();
+    super.dispose();
   }
 
-  int _selectedIndex = 0;
+  Future<void> _submitPost() async {
+    if (_formKey.currentState!.validate()) {
+      final success = await _controller.createPost(
+        title: _titleController.text.trim(),
+        content: _postController.text.trim(),
+      );
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+      if (success) {
+        Get.offAll(() => NewsFeedScreen());
+        Get.snackbar(
+          'Success',
+          'Your post has been published',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: AppColors.success.withOpacity(0.1),
+          colorText: AppColors.success,
+          margin: const EdgeInsets.all(16),
+          duration: const Duration(seconds: 3),
+        );
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: true,
         centerTitle: true,
-        backgroundColor: primaryColor,
-        title: Text(
-          "Add NewsFeed",
+        backgroundColor: AppColors.primary,
+        title: const Text(
+          "Create Post",
           style: TextStyle(
-              color: wColor,
-              fontSize: 25,
-              fontWeight: FontWeight.w900),
+            color: AppColors.textLight,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        foregroundColor: wColor,
-        shape: RoundedRectangleBorder(
+        foregroundColor: AppColors.textLight,
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(20),
             bottomRight: Radius.circular(20),
           ),
         ),
-        toolbarHeight: MediaQuery.of(context).size.height / 9, // Set your desired height here
+        elevation: 4,
+        shadowColor: AppColors.shadow,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-      // color: wColor,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(top: 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-
-                    Text("Post", style: TextStyle(fontSize: 32, fontWeight: FontWeight.w800),),
-                    SizedBox(height: 15),
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          TextFormField(
-                            controller: titleController,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              labelText: 'Title',
-                            ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Please enter a title ";
-                              }
-                              return null;
-                            },
-                          ),
-                          SizedBox(height: 15),
-                          TextFormField(
-                            controller: postController,
-                            maxLines: 10,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              labelText: 'Add Post Detail',
-                            ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Please Add Detail ";
-                              }
-                              return null;
-                            },
-                          ),
-                        ],
+      body: Container(
+        color: AppColors.background,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Obx(() {
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Share something with the community",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.textPrimary,
+                        ),
                       ),
-                    ),
+                      const SizedBox(height: 16),
 
-                    SizedBox(height: 40),
-
-                    RoundedButton(
-                        title: "Post",
-                        icon: Icons.post_add,
-                        onTap: () async {
-                          if (_formKey.currentState!.validate()) {
-                            var post = postController.text.trim();
-                            var postTitle = titleController.text.trim();
-
-                            try {
-                              await FirebaseFirestore.instance
-                                  .collection("newsFeed")
-                                  .doc()
-                                  .set({
-                                "createdAT": DateTime.now(),
-                                "userId": userId?.uid,
-                                "postTitle": postTitle,
-                                "post": post,
-                                "likes": likes,
-
-                              }).then((value) => {
-                                Get.off(NewsFeedScreen()),
-                              });
-                            } catch (e) {
-                              print("Error $e");
-                            }
+                      // Title Field
+                      _buildTextField(
+                        controller: _titleController,
+                        label: 'Title',
+                        hint: 'Enter a catchy title',
+                        icon: Icons.title,
+                        maxLength: 100,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'Please enter a title';
                           }
-                        })
-                  ],
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 16),
+
+                      // Content Field
+                      _buildTextField(
+                        controller: _postController,
+                        label: 'Content',
+                        hint: 'Share your thoughts...',
+                        maxLines: 10,
+                        minLines: 5,
+                        maxLength: 500,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'Please enter some content';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 16),
+
+                      // Image Upload Section
+                      _buildImageUploadSection(),
+                      const SizedBox(height: 24),
+
+                      // Submit Button
+                      SizedBox(
+                        width: double.infinity,
+                        height: 56,
+                        child: ElevatedButton.icon(
+                          icon: _controller.isSubmitting.value
+                              ? const SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: CircularProgressIndicator(
+                              color: AppColors.textLight,
+                              strokeWidth: 3,
+                            ),
+                          )
+                              : const Icon(Icons.send_rounded),
+                          label: Text(
+                            _controller.isSubmitting.value ? "Posting..." : "Post",
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primary,
+                            foregroundColor: AppColors.textLight,
+                            elevation: 4,
+                            shadowColor: AppColors.primary.withOpacity(0.4),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                          onPressed: _controller.isSubmitting.value ? null : _submitPost,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              );
+            }),
           ),
         ),
       ),
+    );
+  }
 
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.inventory,
-            ),
-            label: 'Inventory',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.newspaper,
-            ),
-            label: 'NewsFeed',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.store),
-            label: 'Market',
+  Widget _buildTextField({
+    required TextEditingController controller,
+    required String label,
+    required String hint,
+    IconData? icon,
+    int? maxLines = 1,
+    int? minLines = 1,
+    int? maxLength,
+    String? Function(String?)? validator,
+  }) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      decoration: BoxDecoration(
+        color: AppColors.cardBackground,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.shadow.withOpacity(0.05),
+            offset: const Offset(0, 3),
+            blurRadius: 6,
           ),
         ],
-        currentIndex: 1,
-        selectedItemColor: primaryColor,
-        onTap: onTabTapped,
+      ),
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+          hintText: hint,
+          floatingLabelBehavior: FloatingLabelBehavior.auto,
+          alignLabelWithHint: maxLines! > 1,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide.none,
+          ),
+          filled: true,
+          fillColor: Colors.transparent,
+          contentPadding: const EdgeInsets.all(20),
+          prefixIcon: icon != null
+              ? Icon(
+            icon,
+            color: AppColors.primary,
+          )
+              : null,
+        ),
+        style: const TextStyle(
+          fontSize: 16,
+          color: AppColors.textPrimary,
+        ),
+        maxLines: maxLines,
+        minLines: minLines,
+        maxLength: maxLength,
+        buildCounter: (context, {required currentLength, required isFocused, maxLength}) {
+          return Container(
+            padding: const EdgeInsets.only(right: 16),
+            alignment: Alignment.centerRight,
+            child: Text(
+              '$currentLength/$maxLength',
+              style: TextStyle(
+                fontSize: 12,
+                color: currentLength >= maxLength!
+                    ? AppColors.error
+                    : AppColors.textSecondary,
+              ),
+            ),
+          );
+        },
+        validator: validator,
+      ),
+    );
+  }
+
+  Widget _buildImageUploadSection() {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      decoration: BoxDecoration(
+        color: AppColors.cardBackground,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.shadow.withOpacity(0.05),
+            offset: const Offset(0, 3),
+            blurRadius: 6,
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (_controller.selectedImagePath.value.isNotEmpty)
+            ImagePreviewWidget(
+              imagePath: _controller.selectedImagePath.value,
+              onRemove: _controller.removeSelectedImage,
+            ),
+          if (_controller.selectedImagePath.value.isEmpty)
+            InkWell(
+              onTap: _controller.pickImage,
+              borderRadius: BorderRadius.circular(16),
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 24),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: AppColors.primary.withOpacity(0.3),
+                    width: 1,
+                    style: BorderStyle.solid,
+                  ),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.add_photo_alternate_outlined,
+                      size: 48,
+                      color: AppColors.primary.withOpacity(0.7),
+                    ),
+                    const SizedBox(height: 12),
+                    const Text(
+                      "Add an image",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.textSecondary,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      "Tap to browse",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: AppColors.primary.withOpacity(0.7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }

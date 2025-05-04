@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/> <!-- Add this -->
+   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW"/>
@@ -15,7 +19,7 @@
     </queries>
 
     <application
-        android:label="agrlinks_app"
+        android:label="Agrilinks"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
